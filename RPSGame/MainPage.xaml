@@ -11,8 +11,7 @@
                 Text="Rock Paper Scissors Game" 
                 FontSize="Title" 
                 FontAttributes="Bold"/>
-                        <!--Image controls to show the player's and the system's choice-->
-
+            <!-- yes hello -->
             <!--Image controls to show the player's and the system's choice-->
             <Image
                    Grid.Row="1" Grid.Column="0" 
