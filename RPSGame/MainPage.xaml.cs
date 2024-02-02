@@ -46,7 +46,7 @@ namespace RPSGame
             playersChoiceImage.Source = $"{playerChoice.ToLower()}_gesture.png";
 
             // Use a random number generator to decide the choice of the computer
-            int computerChoiceIndex = random.Next(1, 4);
+            int computerChoiceIndex = random.Next(1, 4); // Change to random.Next(1, 4)
             string[] choices = { "Rock", "Paper", "Scissors" };
             string computerChoice = choices[computerChoiceIndex - 1];
 
@@ -58,37 +58,35 @@ namespace RPSGame
             if (playerChoice == "Rock" && computerChoice == "Scissors")
             {
                 playerScore++;
-                playerScoreLabel.Text = $"Player Score: {playerScore}";
             }
             else if (playerChoice == "Rock" && computerChoice == "Paper")
             {
                 systemScore++;
-                systemScoreLabel.Text = $"System Score: {systemScore}";
             }
             else if (playerChoice == "Scissors" && computerChoice == "Paper")
             {
                 playerScore++;
-                playerScoreLabel.Text = $"Player Score: {playerScore}";
             }
             else if (playerChoice == "Scissors" && computerChoice == "Rock")
             {
                 systemScore++;
-                systemScoreLabel.Text = $"System Score: {systemScore}";
             }
             else if (playerChoice == "Paper" && computerChoice == "Scissors")
             {
                 systemScore++;
-                systemScoreLabel.Text = $"System Score: {systemScore}";
             }
             else if (playerChoice == "Paper" && computerChoice == "Rock")
             {
                 playerScore++;
-                playerScoreLabel.Text = $"Player Score: {playerScore}";
             }
             else
             {
                 // It's a tie - no points are scored
             }
+
+            // Update the score labels
+            playerScoreLabel.Text = $"Player Score: {playerScore}";
+            systemScoreLabel.Text = $"System Score: {systemScore}";
 
             // Check if the game is over
             if (playerScore == 3 || systemScore == 3)
