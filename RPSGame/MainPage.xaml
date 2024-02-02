@@ -1,84 +1,94 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RPSGame.MainPage">
+             x:Class="RPSGame.MainPage"
+             BackgroundColor="LightGray">
+
 
     <Grid>
-        <!-- The header label -->
-        <Label
-            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-            Text="Rock Paper Scissors"
-            FontSize="Title" 
-            FontAttributes="Bold"
-            HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <!-- Image controls to display player's and computer's choice -->
-        <Image
-            Grid.Row="1" Grid.Column="0"
-            Source="question_mark_image.png" 
-            HorizontalOptions="Center"
-            Margin="5"
-            Aspect="AspectFit"
-            x:Name="ImagePlayerChoice"/>
-        <Image
-            Grid.Row="1" Grid.Column="1"
-            Source="question_mark_image.png" 
-            HorizontalOptions="Center"
-            Margin="5"
-            Aspect="AspectFit"
-            x:Name="ImageComputerChoice"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <!-- ImageButton controls for player's choice -->
-        <Grid 
-            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-            Margin="2">
-            <ImageButton
-                Grid.Row="0" Grid.Column="0"
-                Aspect="AspectFit"
-                Source="rock_gesture.png" 
-                x:Name="ImageButtonRock"/>
-            <ImageButton
-                Grid.Row="0" Grid.Column="1"
-                Aspect="AspectFit"
-                Source="paper_gesture.png" 
-                x:Name="ImageButtonPaper"/>
-            <ImageButton
-                Grid.Row="0" Grid.Column="2"
-                Aspect="AspectFit"
-                Source="scissors_gesture.png" 
-                x:Name="ImageButtonScissors"/>
-        </Grid>
+        <Label x:Name="headerLabel"
+               Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Text="Rock Paper Scissors"
+               FontSize="Large"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
 
-        <!-- Label to show computer's choice -->
-        <Label
-            Grid.Row="3" Grid.Column="1"
-            HorizontalOptions="Center" VerticalOptions="Center"
-            Margin="5"
-            Text="System's Choice: "
-            FontSize="Medium"
-            x:Name="LabelComputerChoice"/>
+        <Image x:Name="playerChoiceImage"
+               Grid.Row="1"
+               Grid.Column="0"
+               Source="questionmark.png"
+               Aspect="AspectFit"/>
 
-        <!-- Labels to show player and computer scores -->
-        <Label 
-            Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
-            Text="Player Score: 0"
-            FontSize="Medium"
-            HorizontalOptions="Center" VerticalOptions="Center"
-            x:Name="LabelPlayerScore" />
-        <Label 
-            Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-            Text="System Score: 0"
-            FontSize="Medium"
-            HorizontalOptions="Center" VerticalOptions="Center"
-            x:Name="LabelSystemScore" />
+        <Image x:Name="systemChoiceImage"
+               Grid.Row="1"
+               Grid.Column="1"
+               Source="questionmark.png"
+               Aspect="AspectFit"/>
 
-        <!-- Button to start a new game -->
-        <Button
-            Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
-            FontSize="Medium"
-            Text="New Game" 
-            IsEnabled="False"
-            VerticalOptions="Center" HorizontalOptions="Center"
-            x:Name="ButtonNewGame"/>
+        <Label x:Name="systemChoiceLabel"
+               Grid.Row="2"
+               Grid.Column="1"
+               Text="System Choice"
+               FontSize="Medium"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+        <Label x:Name="playerScoreLabel"
+               Grid.Row="3"
+               Grid.Column="0"
+               Text="Player Score: 0"
+               FontSize="Medium"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+        <Label x:Name="systemScoreLabel"
+               Grid.Row="3"
+               Grid.Column="1"
+               Text="System Score: 0"
+               FontSize="Medium"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+        <ImageButton x:Name="rockImageButton"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     Source="rock_gesture.png"
+                     Clicked="OnRockImageButtonClicked"/>
+
+        <ImageButton x:Name="paperImageButton"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     Source="paper_gesture.png"
+                     Clicked="OnPaperImageButtonClicked"/>
+
+        <ImageButton x:Name="scissorsImageButton"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     Source="scissors_gesture.png"
+                     Clicked="OnScissorsImageButtonClicked"/>
+
+        <Button x:Name="newGameButton"
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="New Game"
+                FontSize="Medium"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="OnNewGameButtonClicked"/>
+
     </Grid>
 </ContentPage>
