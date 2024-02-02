@@ -37,6 +37,11 @@ namespace RPSGame
 
         private void PlayRound(string playerChoice)
         {
+            // Disable ImageButtons to prevent multiple clicks
+            rockButton.IsEnabled = false;
+            paperButton.IsEnabled = false;
+            scissorsButton.IsEnabled = false;
+
             // Show the corresponding picture for the player's choice
             playersChoiceImage.Source = $"{playerChoice.ToLower()}_gesture.png";
 
@@ -50,37 +55,54 @@ namespace RPSGame
             systemChoiceLabel.Text = $"System's Choice: {computerChoice}";
 
             // Decide the winner of the round
-            if (playerChoice == computerChoice)
+            if (playerChoice == "Rock" && computerChoice == "Scissors")
             {
-                // It's a tie
+                playerScore++;
+                playerScoreLabel.Text = $"Player Score: {playerScore}";
             }
-            else if ((playerChoice == "Rock" && computerChoice == "Scissors") ||
-                     (playerChoice == "Paper" && computerChoice == "Rock") ||
-                     (playerChoice == "Scissors" && computerChoice == "Paper"))
+            else if (playerChoice == "Rock" && computerChoice == "Paper")
             {
-                // Player wins the round
+                systemScore++;
+                systemScoreLabel.Text = $"System Score: {systemScore}";
+            }
+            else if (playerChoice == "Scissors" && computerChoice == "Paper")
+            {
+                playerScore++;
+                playerScoreLabel.Text = $"Player Score: {playerScore}";
+            }
+            else if (playerChoice == "Scissors" && computerChoice == "Rock")
+            {
+                systemScore++;
+                systemScoreLabel.Text = $"System Score: {systemScore}";
+            }
+            else if (playerChoice == "Paper" && computerChoice == "Scissors")
+            {
+                systemScore++;
+                systemScoreLabel.Text = $"System Score: {systemScore}";
+            }
+            else if (playerChoice == "Paper" && computerChoice == "Rock")
+            {
                 playerScore++;
                 playerScoreLabel.Text = $"Player Score: {playerScore}";
             }
             else
             {
-                // Computer wins the round
-                systemScore++;
-                systemScoreLabel.Text = $"System Score: {systemScore}";
+                // It's a tie - no points are scored
             }
 
             // Check if the game is over
             if (playerScore == 3 || systemScore == 3)
             {
                 DeclareWinner();
-
-                // Disable ImageButtons
-                rockButton.IsEnabled = false;
-                paperButton.IsEnabled = false;
-                scissorsButton.IsEnabled = false;
-
                 // Enable the "New Game" button
                 playButton.IsEnabled = true;
+            }
+            else
+            {
+                // Enable ImageButtons for the next round
+                rockButton.IsEnabled = true;
+                paperButton.IsEnabled = true;
+                scissorsButton.IsEnabled = true;
             }
         }
 
