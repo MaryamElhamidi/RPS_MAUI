@@ -96,9 +96,12 @@
             <Button
 
                     x:Name="playButton"
-                    Grid.Row="4" Grid.Column="0"
+                    Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                     FontSize="Medium"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
                     Text="New Game"
+                    BackgroundColor="BlueViolet"
                     TextColor="DarkBlue"
                     IsEnabled="False"/>
 

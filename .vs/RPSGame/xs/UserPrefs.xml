@@ -1,27 +1,25 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{6ECA9F64-0CCD-436D-B86F-5D938587E45D}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.RPSGame PreferredExecutionTarget="MyAppleMacCatalystID" />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../usr/local/share/dotnet/packs/Microsoft.Maui.Resizetizer.Sdk/7.0.101/targets/Microsoft.Maui.Resizetizer.targets">
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.ItemProperties.RPSGame PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RPSGame/MainPage.xaml.cs">
     <Files>
-      <File FileName="RPSGame/MainPage.xaml" Line="1" Column="1" />
-      <File FileName="../../../../../usr/local/share/dotnet/packs/Microsoft.Maui.Resizetizer.Sdk/7.0.101/targets/Microsoft.Maui.Resizetizer.targets" Line="525" Column="9" />
-      <File FileName="RPSGame/MainPage.xaml.cs" Line="7" Column="13" />
+      <File FileName="RPSGame/MainPage.xaml" Line="43" Column="30" />
+      <File FileName="../../../../../usr/local/share/dotnet/packs/Microsoft.Maui.Resizetizer.Sdk/7.0.101/targets/Microsoft.Maui.Resizetizer.targets" />
+      <File FileName="RPSGame/MainPage.xaml.cs" Line="64" Column="24" />
+      <File FileName="RPSGame/MauiProgram.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="RPSGame" expanded="True">
-            <Node name="RPSGame" expanded="True">
-              <Node name="Resources" expanded="True">
-                <Node name="Images" expanded="True" />
+            <Node name="RPSGame">
+              <Node name="MainPage.xaml" expanded="True">
+                <Node name="MainPage.xaml.cs" selected="True" />
               </Node>
-              <Node name="AppShell.xaml" expanded="True" />
-              <Node name="MainPage.xaml" expanded="True" />
-              <Node name="MauiProgram.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -29,5 +27,5 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

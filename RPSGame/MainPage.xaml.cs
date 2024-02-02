@@ -1,120 +1,121 @@
 ﻿using System;
-using System.IO;
-using Xamarin;
+using Microsoft.Maui.Controls;
 
 namespace RPSGame
 {
     public partial class MainPage : ContentPage
     {
-        private int playerScore;
-        private int systemScore;
-        private Random random;
+        private int playerScore = 0;
+        private int systemScore = 0;
+        private Random random = new Random();
 
         public MainPage()
         {
             InitializeComponent();
-            random = new Random();
-            playerScore = 0;
-            systemScore = 0;
-            UpdateScoreLabels();
-            playButton.IsEnabled = true;
+
+            // Attach event handlers
+            rockButton.Clicked += ChoiceRock;
+            paperButton.Clicked += ChoicePaper;
+            scissorsButton.Clicked += ChoiceScissors;
+            playButton.Clicked += PlayButtonHit;
         }
 
-        private void UpdateScoreLabels()
+        private void ChoiceRock(object sender, EventArgs e)
         {
-            playerScoreLabel.Text = $"Player Score: {playerScore}";
-            systemScoreLabel.Text = $"System Score: {systemScore}";
+            PlayRound("Rock");
         }
 
-        private void ChoiceRock()
+        private void ChoicePaper(object sender, EventArgs e)
         {
-            PlayGame("rock");
+            PlayRound("Paper");
         }
 
-        private void ChoicePaper()
+        private void ChoiceScissors(object sender, EventArgs e)
         {
-            PlayGame("paper");
+            PlayRound("Scissors");
         }
 
-        private void ChoiceScissors()
+        private void PlayRound(string playerChoice)
         {
-            PlayGame("scissors");
-        }
+            // Show the corresponding picture for the player's choice
+            playersChoiceImage.Source = $"{playerChoice.ToLower()}_gesture.png";
 
-        private void PlayGame(string playerChoice)
-        {
-            string systemChoice = GetSystemChoice();
-            systemChoiceLabel.Text = $"System's Choice: {systemChoice}";
-            ImageSource playerImageSource = GetImageSource(playerChoice);
-            ImageSource systemImageSource = GetImageSource(systemChoice);
-            playersChoiceImage.Source = playerImageSource;
-            systemChoiceImage.Source = systemImageSource;
-            int result = GetResult(playerChoice, systemChoice);
-            UpdateScore(result);
-            playButton.IsEnabled = true;
-        }
+            // Use a random number generator to decide the choice of the computer
+            int computerChoiceIndex = random.Next(1, 4);
+            string[] choices = { "Rock", "Paper", "Scissors" };
+            string computerChoice = choices[computerChoiceIndex - 1];
 
-        private string GetSystemChoice()
-        {
-            int randomNumber = random.Next(1, 4);
-            switch (randomNumber)
+            // Show the computer's choice image and label
+            systemChoiceImage.Source = $"{computerChoice.ToLower()}_gesture.png";
+            systemChoiceLabel.Text = $"System's Choice: {computerChoice}";
+
+            // Decide the winner of the round
+            if (playerChoice == computerChoice)
             {
-                case 1:
-                    return "rock";
-                case 2:
-                    return "paper";
-                default:
-                    return "scissors";
+                // It's a tie
             }
-        }
-
-        private ImageSource GetImageSource(string choice)
-        {
-            return ImageSource.FromResource($"RPSGame.Images.{choice}_gesture.png", typeof(MainPage).Assembly);
-        }
-
-        private int GetResult(string playerChoice, string systemChoice)
-        {
-            if (playerChoice == systemChoice)
+            else if ((playerChoice == "Rock" && computerChoice == "Scissors") ||
+                     (playerChoice == "Paper" && computerChoice == "Rock") ||
+                     (playerChoice == "Scissors" && computerChoice == "Paper"))
             {
-                return 0; // Draw
-            }
-            else if (
-                (playerChoice == "rock" && systemChoice == "scissors") ||
-                (playerChoice == "paper" && systemChoice == "rock") ||
-                (playerChoice == "scissors" && systemChoice == "paper")
-            )
-            {
-                return 1; // Player wins
+                // Player wins the round
+                playerScore++;
+                playerScoreLabel.Text = $"Player Score: {playerScore}";
             }
             else
             {
-                return -1; // System wins
-            }
-        }
-
-        private void UpdateScore(int result)
-        {
-            if (result == 1)
-            {
-                playerScore++;
-            }
-            else if (result == -1)
-            {
+                // Computer wins the round
                 systemScore++;
+                systemScoreLabel.Text = $"System Score: {systemScore}";
             }
-            UpdateScoreLabels();
+
+            // Check if the game is over
+            if (playerScore == 3 || systemScore == 3)
+            {
+                DeclareWinner();
+
+                // Disable ImageButtons
+                rockButton.IsEnabled = false;
+                paperButton.IsEnabled = false;
+                scissorsButton.IsEnabled = false;
+
+                // Enable the "New Game" button
+                playButton.IsEnabled = true;
+            }
         }
 
-        private void PlayButton_Clicked(object sender, EventArgs e)
+        private void DeclareWinner()
         {
+            // Display the final winner using an alert
+            string winner = (playerScore == 3) ? "Player" : "System";
+            DisplayAlert("Game Over", $"{winner} wins the game!", "OK");
+        }
+
+        private void ResetGame()
+        {
+            // Reset scores
             playerScore = 0;
             systemScore = 0;
-            UpdateScoreLabels();
+            playerScoreLabel.Text = "Player Score: 0";
+            systemScoreLabel.Text = "System Score: 0";
+
+            // Reset images and labels
+            playersChoiceImage.Source = "question_mark.png";
+            systemChoiceImage.Source = "question_mark.png";
+            systemChoiceLabel.Text = "System's Choice: ";
+
+            // Enable ImageButtons for the new game
             rockButton.IsEnabled = true;
             paperButton.IsEnabled = true;
             scissorsButton.IsEnabled = true;
+
+            // Disable the "New Game" button
             playButton.IsEnabled = false;
+        }
+
+        private void PlayButtonHit(object sender, EventArgs e)
+        {
+            ResetGame();
         }
     }
 }
