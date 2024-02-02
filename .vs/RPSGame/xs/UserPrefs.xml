@@ -7,23 +7,25 @@
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="RPSGame/MainPage.xaml.cs">
     <Files>
-      <File FileName="RPSGame/MainPage.xaml" Line="113" Column="1" />
+      <File FileName="RPSGame/MainPage.xaml" />
       <File FileName="../../../../../usr/local/share/dotnet/packs/Microsoft.Maui.Resizetizer.Sdk/7.0.101/targets/Microsoft.Maui.Resizetizer.targets" />
-      <File FileName="RPSGame/MainPage.xaml.cs" Line="58" Column="74" />
+      <File FileName="RPSGame/MainPage.xaml.cs" Line="85" Column="55" />
       <File FileName="RPSGame/MauiProgram.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="RPSGame" expanded="True">
+          <Node name="RPSGame">
             <Node name="RPSGame" expanded="True">
-              <Node name="Resources" expanded="True">
-                <Node name="Images" expanded="True" />
+              <Node name="MainPage.xaml" expanded="True">
+                <Node name="MainPage.xaml.cs" selected="True" />
               </Node>
-              <Node name="MainPage.xaml" expanded="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
