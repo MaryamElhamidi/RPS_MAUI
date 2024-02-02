@@ -8,17 +8,25 @@
             <!--The header label-->
             <Label 
                 Grid.Row="0" Grid.Column="0"
-                Text="Rock Paper Scissors Game" 
-                FontSize="Title" 
+                Text="Rock Paper Scissors Game"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="Title"
+                TextColor="SlateBlue"
                 FontAttributes="Bold"/>
 
             <!--Image controls to show the player's and the system's choice-->
+
             <Image
+                   x:Name="playersChoiceImage"
+                   Source="question_mark.png"
                    Grid.Row="1" Grid.Column="0" 
                    HorizontalOptions="Center"
                    Margin="5"
                    Aspect="AspectFit"/>
             <Image
+                   Source="question_mark.png"
+                   x:Name= "systemChoiceImage"
                    Grid.Row="1" Grid.Column="1" 
                    HorizontalOptions="Center"
                    Margin="5"
@@ -31,36 +39,68 @@
                 Margin="2">
 
                 <ImageButton
+                             Source="rock_gesture.png"
+                             Clicked="ChoiceRock"
+                             x:Name="rockButton"
+                             IsEnabled="True"
                              Grid.Row="0" Grid.Column="0" 
                              Aspect="AspectFit" />
                 <ImageButton
+                             Source="paper_gesture.png"
+                             Clicked="choicePaper"
+                             x:Name="paperButton"
+                             IsEnabled="True"
                              Grid.Row="0" Grid.Column="1"
                              Aspect="AspectFit"/>
                 <ImageButton
+
+                             Source="scissors_gesture.png"
+                             Clicked="ChoiceScissors"
+                             x:Name="ScissorsButton"
+                             IsEnabled="True"
                              Grid.Row="0" Grid.Column="2" 
                              Aspect="AspectFit"/>
             </Grid>
 
             <!--Label to show the system's choice-->
+
             <Label
+                   x:Name="systemChoiceLabel"
+                   FontSize="Medium"
+                   TextColor="DeepPink"
                    Grid.Row="2" Grid.Column="1" 
                    HorizontalOptions="Center" VerticalOptions="Center" 
                    Margin="5"
                    Text="System's Choice: "/>
 
             <!--Labels to show the player's and the system's scores-->
-            <Label 
+            <Label
+                   x:Name="playerScoreLabel"
+                   FontSize="Medium"
+                   TextColor="SeaGreen"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
                    Grid.Row="3" Grid.Column="0"                    
                    Text="Player Score: 0" />
-            <Label 
+            <Label
+
+                   x:Name="systemScoreLabel"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="Medium"
+                   TextColor="SeaGreen"
                    Grid.Row="3" Grid.Column="1" 
                    Text="System Score: 0" />
 
             <!--Button to start a new game, initialliy disabled-->
             <Button
+
+                    x:Name="playButton"
+                    Clicked="playButtonHit"
                     Grid.Row="4" Grid.Column="0"
                     FontSize="Medium"
-                    Text="New Game" 
+                    Text="New Game"
+                    TextColor="DarkBlue"
                     IsEnabled="False"/>
         </Grid>
     </Grid>
