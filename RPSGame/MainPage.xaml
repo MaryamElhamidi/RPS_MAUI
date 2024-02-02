@@ -47,7 +47,7 @@
                              Aspect="AspectFit" />
                 <ImageButton
                              Source="paper_gesture.png"
-                             Clicked="choicePaper"
+                             Clicked="ChoicePaper"
                              x:Name="paperButton"
                              IsEnabled="True"
                              Grid.Row="0" Grid.Column="1"
@@ -56,7 +56,7 @@
 
                              Source="scissors_gesture.png"
                              Clicked="ChoiceScissors"
-                             x:Name="ScissorsButton"
+                             x:Name="scissorsButton"
                              IsEnabled="True"
                              Grid.Row="0" Grid.Column="2" 
                              Aspect="AspectFit"/>
@@ -96,12 +96,12 @@
             <Button
 
                     x:Name="playButton"
-                    Clicked="playButtonHit"
                     Grid.Row="4" Grid.Column="0"
                     FontSize="Medium"
                     Text="New Game"
                     TextColor="DarkBlue"
                     IsEnabled="False"/>
+
         </Grid>
     </Grid>
 
