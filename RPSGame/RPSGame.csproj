@@ -30,9 +30,6 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-	  <CreatePackage>false</CreatePackage>
-	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -55,22 +52,4 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Remove="Resources\Images\paper_gesture.svg" />
-	  <None Remove="Resources\Images\paper.svg" />
-	  <None Remove="Resources\Images\question_mark.svg" />
-	  <None Remove="Resources\Images\rock_gesture.svg" />
-	  <None Remove="Resources\Images\rock.svg" />
-	  <None Remove="Resources\Images\scissors_gesture.svg" />
-	  <None Remove="Resources\Images\scissors.svg" />
-	</ItemGroup>
-	<ItemGroup>
-	  <BundleResource Include="Resources\Images\paper_gesture.svg" />
-	  <BundleResource Include="Resources\Images\paper.svg" />
-	  <BundleResource Include="Resources\Images\question_mark.svg" />
-	  <BundleResource Include="Resources\Images\rock_gesture.svg" />
-	  <BundleResource Include="Resources\Images\rock.svg" />
-	  <BundleResource Include="Resources\Images\scissors_gesture.svg" />
-	  <BundleResource Include="Resources\Images\scissors.svg" />
-	</ItemGroup>
 </Project>

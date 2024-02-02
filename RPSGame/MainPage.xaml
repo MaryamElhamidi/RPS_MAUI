@@ -1,94 +1,69 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RPSGame.MainPage"
-             BackgroundColor="LightGray">
-
+             x:Class="RPSGame.MainPage">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <Grid RowDefinitions="*,2*,.5*,*,*" ColumnDefinitions="*,*">
+            <!--The header label-->
+            <Label 
+                Grid.Row="0" Grid.Column="0"
+                Text="Rock Paper Scissors Game" 
+                FontSize="Title" 
+                FontAttributes="Bold"/>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+            <!--Image controls to show the player's and the system's choice-->
+            <Image
+                   Grid.Row="1" Grid.Column="0" 
+                   HorizontalOptions="Center"
+                   Margin="5"
+                   Aspect="AspectFit"/>
+            <Image
+                   Grid.Row="1" Grid.Column="1" 
+                   HorizontalOptions="Center"
+                   Margin="5"
+                   Aspect="AspectFit"/>
 
-        <Label x:Name="headerLabel"
-               Grid.Row="0"
-               Grid.Column="0"
-               Grid.ColumnSpan="2"
-               Text="Rock Paper Scissors"
-               FontSize="Large"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
+            <!--ImageButtons to capture the player's choice-->
+            <Grid 
+                Grid.Row="2"             
+                ColumnDefinitions="*,*,*" 
+                Margin="2">
 
-        <Image x:Name="playerChoiceImage"
-               Grid.Row="1"
-               Grid.Column="0"
-               Source="questionmark.png"
-               Aspect="AspectFit"/>
+                <ImageButton
+                             Grid.Row="0" Grid.Column="0" 
+                             Aspect="AspectFit" />
+                <ImageButton
+                             Grid.Row="0" Grid.Column="1"
+                             Aspect="AspectFit"/>
+                <ImageButton
+                             Grid.Row="0" Grid.Column="2" 
+                             Aspect="AspectFit"/>
+            </Grid>
 
-        <Image x:Name="systemChoiceImage"
-               Grid.Row="1"
-               Grid.Column="1"
-               Source="questionmark.png"
-               Aspect="AspectFit"/>
+            <!--Label to show the system's choice-->
+            <Label
+                   Grid.Row="2" Grid.Column="1" 
+                   HorizontalOptions="Center" VerticalOptions="Center" 
+                   Margin="5"
+                   Text="System's Choice: "/>
 
-        <Label x:Name="systemChoiceLabel"
-               Grid.Row="2"
-               Grid.Column="1"
-               Text="System Choice"
-               FontSize="Medium"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
+            <!--Labels to show the player's and the system's scores-->
+            <Label 
+                   Grid.Row="3" Grid.Column="0"                    
+                   Text="Player Score: 0" />
+            <Label 
+                   Grid.Row="3" Grid.Column="1" 
+                   Text="System Score: 0" />
 
-        <Label x:Name="playerScoreLabel"
-               Grid.Row="3"
-               Grid.Column="0"
-               Text="Player Score: 0"
-               FontSize="Medium"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
-
-        <Label x:Name="systemScoreLabel"
-               Grid.Row="3"
-               Grid.Column="1"
-               Text="System Score: 0"
-               FontSize="Medium"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
-
-        <ImageButton x:Name="rockImageButton"
-                     Grid.Row="1"
-                     Grid.Column="0"
-                     Source="rock_gesture.png"
-                     Clicked="OnRockImageButtonClicked"/>
-
-        <ImageButton x:Name="paperImageButton"
-                     Grid.Row="1"
-                     Grid.Column="0"
-                     Source="paper_gesture.png"
-                     Clicked="OnPaperImageButtonClicked"/>
-
-        <ImageButton x:Name="scissorsImageButton"
-                     Grid.Row="1"
-                     Grid.Column="0"
-                     Source="scissors_gesture.png"
-                     Clicked="OnScissorsImageButtonClicked"/>
-
-        <Button x:Name="newGameButton"
-                Grid.Row="3"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Text="New Game"
-                FontSize="Medium"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                Clicked="OnNewGameButtonClicked"/>
-
+            <!--Button to start a new game, initialliy disabled-->
+            <Button
+                    Grid.Row="4" Grid.Column="0"
+                    FontSize="Medium"
+                    Text="New Game" 
+                    IsEnabled="False"/>
+        </Grid>
     </Grid>
+
+
 </ContentPage>
