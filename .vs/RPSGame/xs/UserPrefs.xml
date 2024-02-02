@@ -9,13 +9,15 @@
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="RPSGame/MainPage.xaml">
     <Files>
-      <File FileName="RPSGame/MainPage.xaml" Line="14" Column="31" />
+      <File FileName="RPSGame/MainPage.xaml" Line="25" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="RPSGame" expanded="True">
-            <Node name="RPSGame" expanded="True" />
+          <Node name="RPSGame">
+            <Node name="RPSGame">
+              <Node name="MainPage.xaml" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

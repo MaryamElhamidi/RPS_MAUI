@@ -4,68 +4,81 @@
              x:Class="RPSGame.MainPage">
 
     <Grid>
-        <Grid RowDefinitions="*,2*,.5*,*,*" ColumnDefinitions="*,*">
-            <!--The header label-->
-            <Label 
+        <!-- The header label -->
+        <Label
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            Text="Rock Paper Scissors"
+            FontSize="Title" 
+            FontAttributes="Bold"
+            HorizontalOptions="Center" VerticalOptions="Center"/>
+
+        <!-- Image controls to display player's and computer's choice -->
+        <Image
+            Grid.Row="1" Grid.Column="0"
+            Source="question_mark_image.png" 
+            HorizontalOptions="Center"
+            Margin="5"
+            Aspect="AspectFit"
+            x:Name="ImagePlayerChoice"/>
+        <Image
+            Grid.Row="1" Grid.Column="1"
+            Source="question_mark_image.png" 
+            HorizontalOptions="Center"
+            Margin="5"
+            Aspect="AspectFit"
+            x:Name="ImageComputerChoice"/>
+
+        <!-- ImageButton controls for player's choice -->
+        <Grid 
+            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+            Margin="2">
+            <ImageButton
                 Grid.Row="0" Grid.Column="0"
-                Text="Rock Paper Scissors Game" 
-                FontSize="Title" 
-                FontAttributes="Bold"/>
-            <!-- yes hello goodbye -->
-            <!-- yes hello goodbye -->
-
-            <!--Image controls to show the player's and the system's choice-->
-            <Image
-                   Grid.Row="1" Grid.Column="0" 
-                   HorizontalOptions="Center"
-                   Margin="5"
-                   Aspect="AspectFit"/>
-            <Image
-                   Grid.Row="1" Grid.Column="1" 
-                   HorizontalOptions="Center"
-                   Margin="5"
-                   Aspect="AspectFit"/>
-
-            <!--ImageButtons to capture the player's choice-->
-            <Grid 
-                Grid.Row="2"             
-                ColumnDefinitions="*,*,*" 
-                Margin="2">
-
-                <ImageButton
-                             Grid.Row="0" Grid.Column="0" 
-                             Aspect="AspectFit" />
-                <ImageButton
-                             Grid.Row="0" Grid.Column="1"
-                             Aspect="AspectFit"/>
-                <ImageButton
-                             Grid.Row="0" Grid.Column="2" 
-                             Aspect="AspectFit"/>
-            </Grid>
-
-            <!--Label to show the system's choice-->
-            <Label
-                   Grid.Row="2" Grid.Column="1" 
-                   HorizontalOptions="Center" VerticalOptions="Center" 
-                   Margin="5"
-                   Text="System's Choice: "/>
-
-            <!--Labels to show the player's and the system's scores-->
-            <Label 
-                   Grid.Row="3" Grid.Column="0"                    
-                   Text="Player Score: 0" />
-            <Label 
-                   Grid.Row="3" Grid.Column="1" 
-                   Text="System Score: 0" />
-
-            <!--Button to start a new game, initialliy disabled-->
-            <Button
-                    Grid.Row="4" Grid.Column="0"
-                    FontSize="Medium"
-                    Text="New Game" 
-                    IsEnabled="False"/>
+                Aspect="AspectFit"
+                Source="rock_gesture.png" 
+                x:Name="ImageButtonRock"/>
+            <ImageButton
+                Grid.Row="0" Grid.Column="1"
+                Aspect="AspectFit"
+                Source="paper_gesture.png" 
+                x:Name="ImageButtonPaper"/>
+            <ImageButton
+                Grid.Row="0" Grid.Column="2"
+                Aspect="AspectFit"
+                Source="scissors_gesture.png" 
+                x:Name="ImageButtonScissors"/>
         </Grid>
+
+        <!-- Label to show computer's choice -->
+        <Label
+            Grid.Row="3" Grid.Column="1"
+            HorizontalOptions="Center" VerticalOptions="Center"
+            Margin="5"
+            Text="System's Choice: "
+            FontSize="Medium"
+            x:Name="LabelComputerChoice"/>
+
+        <!-- Labels to show player and computer scores -->
+        <Label 
+            Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+            Text="Player Score: 0"
+            FontSize="Medium"
+            HorizontalOptions="Center" VerticalOptions="Center"
+            x:Name="LabelPlayerScore" />
+        <Label 
+            Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+            Text="System Score: 0"
+            FontSize="Medium"
+            HorizontalOptions="Center" VerticalOptions="Center"
+            x:Name="LabelSystemScore" />
+
+        <!-- Button to start a new game -->
+        <Button
+            Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+            FontSize="Medium"
+            Text="New Game" 
+            IsEnabled="False"
+            VerticalOptions="Center" HorizontalOptions="Center"
+            x:Name="ButtonNewGame"/>
     </Grid>
-
-
 </ContentPage>
