@@ -37,16 +37,11 @@ namespace RPSGame
 
         private void PlayRound(string playerChoice)
         {
-            // Disable ImageButtons to prevent multiple clicks
-            rockButton.IsEnabled = false;
-            paperButton.IsEnabled = false;
-            scissorsButton.IsEnabled = false;
-
             // Show the corresponding picture for the player's choice
             playersChoiceImage.Source = $"{playerChoice.ToLower()}_gesture.png";
 
             // Use a random number generator to decide the choice of the computer
-            int computerChoiceIndex = random.Next(1, 4); // Change to random.Next(1, 4)
+            int computerChoiceIndex = random.Next(1, 4);
             string[] choices = { "Rock", "Paper", "Scissors" };
             string computerChoice = choices[computerChoiceIndex - 1];
 
@@ -57,28 +52,30 @@ namespace RPSGame
             // Decide the winner of the round
             if (playerChoice == "Rock" && computerChoice == "Scissors")
             {
+                // User wins with rock against scissors
                 playerScore++;
             }
             else if (playerChoice == "Rock" && computerChoice == "Paper")
             {
+                // User wins with paper against rock
                 systemScore++;
             }
             else if (playerChoice == "Scissors" && computerChoice == "Paper")
             {
+                // User wins with scissors against paper
                 playerScore++;
-            }
-            else if (playerChoice == "Scissors" && computerChoice == "Rock")
-            {
-                systemScore++;
             }
             else if (playerChoice == "Paper" && computerChoice == "Scissors")
             {
+                // Computer wins with scissors against paper
                 systemScore++;
             }
             else if (playerChoice == "Paper" && computerChoice == "Rock")
             {
+                // Computer wins with scissors against paper
                 playerScore++;
             }
+
             else
             {
                 // It's a tie - no points are scored
@@ -92,15 +89,19 @@ namespace RPSGame
             if (playerScore == 3 || systemScore == 3)
             {
                 DeclareWinner();
+
+                // Disable ImageButtons
+                rockButton.IsEnabled = false;
+                paperButton.IsEnabled = false;
+                scissorsButton.IsEnabled = false;
+
                 // Enable the "New Game" button
                 playButton.IsEnabled = true;
             }
             else
             {
-                // Enable ImageButtons for the next round
-                rockButton.IsEnabled = true;
-                paperButton.IsEnabled = true;
-                scissorsButton.IsEnabled = true;
+                // Enable the "New Game" button for the next round
+                playButton.IsEnabled = true;
             }
         }
 
