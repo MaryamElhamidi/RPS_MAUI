@@ -7,12 +7,14 @@ namespace RPSGame
     {
         int playerScore = 0;
         int systemScore = 0;
+        int playerConsecutiveWins = 0;
+        int systemConsecutiveWins = 0;
+        bool isMatchOver = false;
         Random random = new Random();
 
         public MainPage()
         {
             InitializeComponent();
-
         }
 
         private void ChoiceRock(object sender, EventArgs e)
@@ -85,9 +87,20 @@ namespace RPSGame
             playerScoreLabel.Text = $"Player Score: {playerScore}";
             systemScoreLabel.Text = $"System Score: {systemScore}";
 
+            // Check for consecutive wins
+            if (playerScore == 3)
+            {
+                playerConsecutiveWins++;
+            }
+            else if (systemScore == 3)
+            {
+                systemConsecutiveWins++;
+            }
+
             // Check if the game is over
             if (playerScore == 3 || systemScore == 3)
             {
+                // Display the final winner using an alert
                 DeclareWinner();
 
                 // Disable ImageButtons
@@ -97,19 +110,40 @@ namespace RPSGame
 
                 // Enable the "New Game" button
                 playButton.IsEnabled = true;
+
+                // Set the match over flag
+                isMatchOver = true;
             }
             else
             {
                 // Enable the "New Game" button for the next round
                 playButton.IsEnabled = true;
+
+                // Reset consecutive wins if the match is not over
+                playerConsecutiveWins = 0;
+                systemConsecutiveWins = 0;
+                isMatchOver = false;
+            }
+
+            if (isMatchOver)
+            {
+                if (playerConsecutiveWins == 2 || systemConsecutiveWins == 2)
+                {
+                    DisplayAlert("Alert", "Match is over. Two Consecutive Wins.", "Ok");
+                    isMatchOver = true;
+                }
             }
         }
+
 
         private void DeclareWinner()
         {
             // Display the final winner using an alert
-            string winner = (playerScore == 3) ? "Player" : "System"; //explained the usage of this in my report
+            string winner = (playerScore == 3) ? "Player" : "System";
             DisplayAlert("Game Over", $"{winner} wins the game!", "OK");
+
+            // Set the match over flag
+            isMatchOver = true;
         }
 
         private void ResetGame()
