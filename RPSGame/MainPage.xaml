@@ -96,6 +96,7 @@
             <Button
 
                     x:Name="playButton"
+                    Clicked="PlayButtonHit"
                     Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                     FontSize="Medium"
                     HorizontalOptions="Center"

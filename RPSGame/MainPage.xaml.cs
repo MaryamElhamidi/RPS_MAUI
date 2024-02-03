@@ -5,20 +5,14 @@ namespace RPSGame
 {
     public partial class MainPage : ContentPage
     {
-        private int playerScore = 0;
-        private int systemScore = 0;
-        private int consecutiveWins = 0; // Track consecutive wins
-        private Random random = new Random();
+        int playerScore = 0;
+        int systemScore = 0;
+        Random random = new Random();
 
         public MainPage()
         {
             InitializeComponent();
 
-            // Attach event handlers
-            rockButton.Clicked += ChoiceRock;
-            paperButton.Clicked += ChoicePaper;
-            scissorsButton.Clicked += ChoiceScissors;
-            playButton.Clicked += PlayButtonHit;
         }
 
         private void ChoiceRock(object sender, EventArgs e)
@@ -51,26 +45,40 @@ namespace RPSGame
             systemChoiceLabel.Text = $"System's Choice: {computerChoice}";
 
             // Decide the winner of the round
-            if (playerChoice == "Rock" && computerChoice == "Scissors" ||
-                playerChoice == "Scissors" && computerChoice == "Paper" ||
-                playerChoice == "Paper" && computerChoice == "Rock")
+            if (playerChoice == "Rock" && computerChoice == "Scissors")
             {
-                // Player wins the round
+                // User wins with rock against scissors
                 playerScore++;
-                consecutiveWins++;
             }
-            else if (playerChoice == "Rock" && computerChoice == "Paper" ||
-                     playerChoice == "Scissors" && computerChoice == "Rock" ||
-                     playerChoice == "Paper" && computerChoice == "Scissors")
+            else if (playerChoice == "Rock" && computerChoice == "Paper")
             {
-                // Computer wins the round
+                // User wins with paper against rock
                 systemScore++;
-                consecutiveWins++;
             }
+            else if (playerChoice == "Scissors" && computerChoice == "Paper")
+            {
+                // User wins with scissors against paper
+                playerScore++;
+            }
+            else if (playerChoice == "Scissors" && computerChoice == "Rock")
+            {
+                // User wins with scissors against paper
+                systemScore++;
+            }
+            else if (playerChoice == "Paper" && computerChoice == "Scissors")
+            {
+                // Computer wins with scissors against paper
+                systemScore++;
+            }
+            else if (playerChoice == "Paper" && computerChoice == "Rock")
+            {
+                // Computer wins with scissors against paper
+                playerScore++;
+            }
+
             else
             {
                 // It's a tie - no points are scored
-                consecutiveWins = 0;
             }
 
             // Update the score labels
@@ -94,41 +102,21 @@ namespace RPSGame
             {
                 // Enable the "New Game" button for the next round
                 playButton.IsEnabled = true;
-
-                // Check if there are two consecutive wins
-                if (consecutiveWins == 2)
-                {
-                    DeclareMatchOver();
-                }
             }
         }
 
         private void DeclareWinner()
         {
             // Display the final winner using an alert
-            string winner = (playerScore == 3) ? "Player" : "System";
+            string winner = (playerScore == 3) ? "Player" : "System"; //explained the usage of this in my report
             DisplayAlert("Game Over", $"{winner} wins the game!", "OK");
-        }
-
-        private void DeclareMatchOver()
-        {
-            // Display match over message using an alert
-            string winner = (playerScore == 3) ? "Player" : "System";
-            DisplayAlert("Match Over", $"{winner} has won two consecutive times. Match is over!", "OK");
-
-            // Disable all controls
-            rockButton.IsEnabled = false;
-            paperButton.IsEnabled = false;
-            scissorsButton.IsEnabled = false;
-            playButton.IsEnabled = false;
         }
 
         private void ResetGame()
         {
-            // Reset scores and consecutive wins
+            // Reset scores
             playerScore = 0;
             systemScore = 0;
-            consecutiveWins = 0;
             playerScoreLabel.Text = "Player Score: 0";
             systemScoreLabel.Text = "System Score: 0";
 
