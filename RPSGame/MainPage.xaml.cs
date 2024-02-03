@@ -77,7 +77,6 @@ namespace RPSGame
                 // Computer wins with scissors against paper
                 playerScore++;
             }
-
             else
             {
                 // It's a tie - no points are scored
@@ -125,6 +124,7 @@ namespace RPSGame
                 isMatchOver = false;
             }
 
+            // Check for consecutive wins after the match is over
             if (isMatchOver)
             {
                 if (playerConsecutiveWins == 2 || systemConsecutiveWins == 2)
@@ -134,7 +134,6 @@ namespace RPSGame
                 }
             }
         }
-
 
         private void DeclareWinner()
         {
